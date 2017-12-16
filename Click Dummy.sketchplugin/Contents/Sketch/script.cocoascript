@@ -13,7 +13,7 @@ var toggleLinkLayers = function (context) {
   }
 }
 
-var exportClickDummy = function(context) {
+var exportClickablePrototype = function(context) {
 
   var doc = context.document;
 
@@ -21,14 +21,14 @@ var exportClickDummy = function(context) {
   var dimensions = size.message.split("x");
   // open the system dialog to choose the export location
   var fileURL = fileSaver();
-  var exportPath = fileURL.path() + '/' + [doc displayName] + '-ClickDummy/';
+  var exportPath = fileURL.path() + '/' + [doc displayName] + '-ClickablePrototype/';
 
   // Authorize Sketch to save a file
-  // new AppSandbox().authorize(exportPath, exportClickDummy);
+  // new AppSandbox().authorize(exportPath, exportClickablePrototype);
 
 
   // HTML will be exported to a new folder in the .sketch file's parent folder
-  // var exportPath = [[doc fileURL] path] + '-ClickDummy/';
+  // var exportPath = [[doc fileURL] path] + '-ClickablePrototype/';
 
   var html = '';
   var artboardNames = [];
@@ -152,7 +152,7 @@ var exportClickDummy = function(context) {
 
   displayMissingArtboardsWarnings(linkTargets, artboardNames);
 
-  doc.showMessage('Click dummy files exported to: ' + exportPath);
+  doc.showMessage('Clickable Prototype files exported to: ' + exportPath);
 
 };
 

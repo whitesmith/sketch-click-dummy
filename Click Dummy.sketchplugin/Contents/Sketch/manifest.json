@@ -1,20 +1,25 @@
 {
-  "name": "Click Dummy",
-  "description": "Export simple HTML click dummies to prototype interactivity. Just draw rectangles to create links between artboards.",
-  "author": "Raureif",
-  "homepage": "http://github.com/raureif",
-  "version": 1.1,
-  "identifier": "net.raureif.sketch.click-dummy",
-  "updateURL": "http://github.com/raureif",
+  "name": "Clickable Prototype",
+  "description": "Export HTML clickable prototypes directly from Sketch. Create links between screens by naming the layer with `linkto:ArtboardName`.",
+  "contributors": [{
+    "name": "Whitesmith",
+    "email": "info@whitesmith.co"
+    },{
+    "name": "Raureif"
+    }],
+  "homepage": "http://github.com/whitesmith",
+  "version": 1.2,
+  "identifier": "co.whitesmith.sketch.clickable-prototype",
+  "updateURL": "http://github.com/whitesmith",
   "compatibleVersion": 3,
   "bundleVersion": 1,
   "commands": [
     {
       "name": "Export…",
-      "identifier": "exportClickDummy",
+      "identifier": "exportClickablePrototype",
       "script": "script.cocoascript",
       "shortcut": "cmd ctrl shift e",
-      "handler": "exportClickDummy"
+      "handler": "exportClickablePrototype"
     },
     {
       "name": "Toggle Link Layers",
@@ -26,7 +31,7 @@
   ],
   "menu": {
     "items": [
-      "exportClickDummy",
+      "exportClickablePrototype",
       "toggleLinkLayers"
     ]
   }
