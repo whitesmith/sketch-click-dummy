@@ -106,11 +106,11 @@ var exportClickDummy = function(context) {
           linkTarget = '';
         }
 
-        if (typeof layer.frame === 'function') {
-          var lx = layer.frame().x();
-          var ly = layer.frame().y();
-          var lw = layer.frame().width();
-          var lh = layer.frame().height();
+        if (typeof layer.absoluteRect === 'function') {
+          var lx = layer.absoluteRect().rulerX();
+          var ly = layer.absoluteRect().rulerY();
+          var lw = layer.absoluteRect().width();
+          var lh = layer.absoluteRect().height();
           html = html + '<a href="' + linkTarget + '" style="left: ' + lx + 'px; top: ' + ly + 'px; width: ' + lw + 'px; height: ' + lh + 'px"></a>\n';
         }
       }
