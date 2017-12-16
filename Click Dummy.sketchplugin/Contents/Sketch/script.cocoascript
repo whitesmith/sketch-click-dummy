@@ -121,7 +121,7 @@ var exportClickDummy = function(context) {
     saveTextToFile(htmlPath, html);
   }
 
-  hideLinkLayers(context);
+  //hideLinkLayers(context);
 
   var slices = doc.currentPage().artboards().objectEnumerator();
 
@@ -134,7 +134,7 @@ var exportClickDummy = function(context) {
     // [doc saveArtboardOrSlice:tempSlice toFile:exportPath + 'img/' + slice.name() + '-2x.png'];
   }
 
-  showLinkLayers(context);
+  //showLinkLayers(context);
 
   displayMissingArtboardsWarnings(linkTargets, artboardNames);
 
