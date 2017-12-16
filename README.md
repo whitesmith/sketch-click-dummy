@@ -16,6 +16,8 @@ Export HTML clickable prototypes directly from Sketch. Create links between scre
 - [x] Export retina 2x images
 - [x] Clip scroll (ideal for mobile prototypes)
 - [ ] Add fixed elements (i.e.: bottom bar in mobile prototypes)
+- [ ] Auto upload to Github Pages or similar
+- [ ] Settings system to save options (color of highlights, artboard size, save location...)
 
 # Contributors
 Tomás Marques <tomasmcm@whitesmith.co> (http://tomasmcm.design/)
