@@ -15,8 +15,10 @@ var toggleLinkLayers = function (context) {
 
 var exportClickDummy = function(context) {
 
-  var doc = context.document
+  var doc = context.document;
 
+  var size = sizePicker(doc.currentPage().artboards()[0].absoluteRect());
+  var dimensions = size.message.split("x");
   // open the system dialog to choose the export location
   var fileURL = fileSaver();
   var exportPath = fileURL.path() + '/' + [doc displayName] + '-ClickDummy/';
@@ -53,18 +55,25 @@ var exportClickDummy = function(context) {
       } \n\
       body { \n\
         text-align: center; \n\
+        background: WhiteSmoke; \n\
       } \n\
       a { \n\
         position: absolute; \n\
         z-index: 100; \n\
       } \n\
       body.is-highlighted a { \n\
-        background-color: #0000ff; \n\
-        opacity: .2; \n\
+        background-color: #faaf00; \n\
+        opacity: .1; \n\
       } \n\
       main { \n\
         position: relative; \n\
         display: inline-block; \n\
+        overflow: scroll; \n\
+        background: white; \n\
+        ' + ( (size.responseCode == 1000) ? 'width: ' + dimensions[0] + 'px; height: ' + dimensions[1] + 'px;' : ' ' ) + ' \n\
+      } \n\
+      img { \n\
+        margin-bottom: -4px; \n\
       } \n\
     </style> \n\
   </head>\n\
@@ -199,4 +208,29 @@ function fileSaver() {
         allowedUrl = [openPanel URL]
     }
     return allowedUrl
+}
+
+
+function sizePicker(dimensions) {
+    var accessory = NSView.alloc().initWithFrame(NSMakeRect(0,0,300,50));
+    var input = NSTextField.alloc().initWithFrame(NSMakeRect(0,25,300,20));
+    var initial = dimensions.width() +"x"+ dimensions.height();
+    log(initial);
+    input.editable = true;
+    input.setStringValue(initial);
+    accessory.addSubview(input);
+
+    var alert = NSAlert.alloc().init();
+    alert.setMessageText("Insert Window Size (ex: 375x667)");
+    alert.addButtonWithTitle('OK');
+    alert.addButtonWithTitle('Ignore Size');
+    alert.setAccessoryView(accessory);
+
+    var responseCode = alert.runModal();
+    var message = input.stringValue();
+    log(responseCode + " " + message);
+    return {
+      responseCode: responseCode,
+      message: message,
+    };
 }
