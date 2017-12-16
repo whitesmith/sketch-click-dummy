@@ -83,11 +83,12 @@ var exportClickDummy = function(context) {
     artboardNames.push(artboardName);
 
     var img1x = 'img/' + artboardName + '.png';
-    // var img2x = 'img/' + artboardName + '-2x.png';
+    var img2x = 'img/' + artboardName + '-2x.png';
 
     html = HTML_HEAD;
     html += '<!-- ' + artboardName + ' -->\n';
-    html += '<img src="' + img1x + /*'" srcset="' + img2x + ' 2x*/'">\n';
+    //html += '<img src="' + img1x + '" srcset="' + img2x + ' 2x" >\n';
+    html += '<img srcset="' + img2x + ' 2x" >\n';
 
     var layers = artboard.children().objectEnumerator();
 
@@ -127,11 +128,15 @@ var exportClickDummy = function(context) {
 
   while (slice = slices.nextObject()) {
 
-    [doc saveArtboardOrSlice:slice toFile:exportPath + 'img/' + slice.name() + '.png'];
+    //[doc saveArtboardOrSlice:slice toFile:exportPath + 'img/' + slice.name() + '.png'];
 
-    // FIXME: This doesn’t work.:(
-    // slice.scale = 2;
-    // [doc saveArtboardOrSlice:tempSlice toFile:exportPath + 'img/' + slice.name() + '-2x.png'];
+    slice.exportOptions().removeAllExportFormats();
+    var exportOption = slice.exportOptions().addExportFormat();
+    exportOption.setScale(2);
+    var tempSlice = MSExportRequest.exportRequestsFromExportableLayer(slice);
+
+    [doc saveArtboardOrSlice:tempSlice[0] toFile:exportPath + 'img/' + slice.name() + '-2x.png'];
+
   }
 
   //showLinkLayers(context);
